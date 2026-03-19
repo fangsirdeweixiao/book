@@ -1,0 +1,95 @@
+{
+  "title": "三体世界观资料库",
+  "description": "基于刘慈欣《三体》系列构建的世界观设定",
+  "version": "1.0",
+  "created_date": "2026-03-19",
+  
+  "timeline": {
+    "eras": [
+      {
+        "name": "威慑纪元",
+        "period": "威慑纪元最后十年",
+        "key_events": [
+          "三体世界向太阳系发射九颗智子",
+          "人类观测到八颗智子",
+          "第九颗智子以纳米逻辑单元形式伪装成科技广播信息"
+        ]
+      }
+    ]
+  },
+  
+  "technologies": {
+    "sophons": {
+      "description": "智子 - 三体人的量子纠缠通讯和监视工具",
+      "capabilities": [
+        "光速通讯",
+        "微观尺度操作",
+        "基础科学锁死",
+        "全球监视"
+      ],
+      "ninth_sophon": {
+        "disguise": "分布式计算与文明自我优化科技广播",
+        "true_nature": "思维格式化协议",
+        "components": "十亿个纳米尺度逻辑单元",
+        "purpose": "从内部锁死人类文明的想象力"
+      }
+    },
+    "thought_formatting_protocol": {
+      "official_name": "文明协同演进框架",
+      "presentation": "开源算法协议",
+      "core_logic": "引导文明将知识、决策、创造力架构在可预测的逻辑基础上",
+      "ultimate_goal": "使人类思维变得透明、可模型化、可预测",
+      "safety_mechanism": "文明自我驯化"
+    }
+  },
+  
+  "factions": {
+    "trisolarans": {
+      "characteristics": [
+        "思维透明",
+        "逻辑极致",
+        "战略部署具有对称性",
+        "无法理解人类思维不透明性"
+      ],
+      "strategic_motivation": {
+        "primary": "防止技术爆炸（智子锁死基础科学）",
+        "secondary": "驯化人类思维模式（AI暗线）",
+        "ultimate_victory": "从文明基因层面消除不确定性"
+      }
+    },
+    "humanity": {
+      "dragon_nation": {
+        "key_figures": [
+          "老将军（末日战役经历者）",
+          "战略分析员"
+        ],
+        "secret_project": "潜龙计划",
+        "facility": "龙国西北绝密地下设施"
+      },
+      "response_strategy": {
+        "discovery_method": "从AI基础理论的异常简洁与完美中起疑",
+        "counter_strategy": "阳谋 - 用敌人的武器练自己的兵",
+        "implementation": "智脑辅佐系统作为特洛伊木马"
+      }
+    }
+  },
+  
+  "key_concepts": {
+    "yang_mou": {
+      "definition": "阳谋 - 公开的计谋，无法被阻止的战略",
+      "application": "利用三体的AI暗线作为磨刀石",
+      "core_principle": "用你的武器，练我的兵"
+    },
+    "qianlong_plan": {
+      "initiation_date": "砺剑日",
+      "objective": "在AI暗线的重压下锻炼人类文明",
+      "methodology": "引导人类在格式化协议框架内进行极致创造性应用"
+    },
+    "wisdom_brain_assistant": {
+      "surface_function": "帮助小B经营",
+      "true_nature": "运行在敌方协议上的特洛伊木马",
+      "deep_logic": "收集人类非逻辑决策与AI逻辑推演的碰撞数据",
+      "global_experiment": "对抗格式化的免疫实验"
+    }
+  }
+}

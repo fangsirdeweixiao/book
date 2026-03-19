@@ -1,0 +1,67 @@
+{
+  "project_name": "AI教育版三体三部曲创作系统",
+  "description": "基于GitBook风格的AI协作创作平台，完整复刻三体世界观",
+  "total_books": 3,
+  "estimated_total_words": 900000,
+  "creation_period": "2026-2027",
+  
+  "book_structure": {
+    "book_1": {
+      "title": "潜龙计划：思维格式化战争",
+      "chapters": 30,
+      "estimated_words": 300000,
+      "time_period": "威慑纪元最后十年至危机纪元初期",
+      "core_theme": "双向暗线对弈，思维格式化协议的发现与应对"
+    },
+    "book_2": {
+      "title": "黑暗森林：AI时代的文明博弈",
+      "chapters": 30,
+      "estimated_words": 300000,
+      "time_period": "危机纪元至威慑纪元结束",
+      "core_theme": "AI技术扩散下的黑暗森林法则新诠释"
+    },
+    "book_3": {
+      "title": "死神永生：数字永生的哲学困境",
+      "chapters": 30,
+      "estimated_words": 300000,
+      "time_period": "威慑后时代至宇宙终结",
+      "core_theme": "AI永生技术与人类存在意义的终极思考"
+    }
+  },
+  
+  "chapter_structure": {
+    "nodes_per_chapter": 10,
+    "words_per_node": 1000,
+    "total_nodes": 900,
+    "node_types": [
+      "narrative",
+      "dialogue", 
+      "technical_explanation",
+      "philosophical_discussion",
+      "character_development",
+      "plot_twist",
+      "world_building",
+      "scientific_concept",
+      "cultural_reference",
+      "cliffhanger"
+    ]
+  },
+  
+  "ai_collaboration_framework": {
+    "writing_roles": {
+      "creative_director": "整体故事架构和主题把控",
+      "plot_architect": "情节设计和节奏控制",
+      "character_designer": "角色塑造和成长弧线",
+      "technical_advisor": "科学概念和技术细节",
+      "philosophical_consultant": "哲学内涵和思想深度",
+      "style_editor": "语言风格和叙事技巧"
+    },
+    "workflow": {
+      "phase_1": "大纲设计和世界观构建",
+      "phase_2": "章节规划和节点分解", 
+      "phase_3": "节点创作和内容填充",
+      "phase_4": "质量控制和风格统一",
+      "phase_5": "整体优化和出版准备"
+    }
+  }
+}

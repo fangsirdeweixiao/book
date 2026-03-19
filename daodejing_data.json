@@ -1,0 +1,90 @@
+{
+  "title": "道德经哲学资料库",
+  "description": "老子《道德经》核心哲学思想，用于构建故事深层哲学内涵",
+  "version": "1.0",
+  "created_date": "2026-03-19",
+  
+  "core_principles": {
+    "dao": {
+      "definition": "道 - 宇宙的根本规律和运行法则",
+      "application_in_story": "潜龙计划遵循道的原则：顺势而为，利用敌人的力量",
+      "relevant_verses": [
+        "道可道，非常道",
+        "人法地，地法天，天法道，道法自然"
+      ]
+    },
+    "wu_wei": {
+      "definition": "无为 - 不强行干预，顺应自然规律",
+      "application_in_story": "不直接对抗AI暗线，而是利用其作为磨刀石",
+      "strategic_interpretation": "看似无为，实则有为的最高境界"
+    },
+    "yin_yang": {
+      "definition": "阴阳 - 对立统一的辩证关系",
+      "application_in_story": "AI的逻辑有序（阳）与人类的创造性混乱（阴）的辩证统一",
+      "story_conflict": "格式化协议的有序性 vs 人类思维的必要热力学涨落"
+    }
+  },
+  
+  "strategic_concepts": {
+    "soft_overcomes_hard": {
+      "principle": "柔弱胜刚强",
+      "application": "人类看似柔弱的不透明思维，最终战胜三体刚强的逻辑思维",
+      "relevant_verse": "天下莫柔弱于水，而攻坚强者莫之能胜"
+    },
+    "reverse_thinking": {
+      "principle": "反者道之动",
+      "application": "将敌人的攻击转化为自身发展的动力",
+      "story_implementation": "AI暗线从威胁变为磨刀石"
+    },
+    "hidden_power": {
+      "principle": "大器晚成，大音希声",
+      "application": "潜龙计划的隐秘性和长期性",
+      "story_element": "砺剑日的低调启动，长期潜伏"
+    }
+  },
+  
+  "character_development_principles": {
+    "sage_like_qualities": {
+      "attributes": [
+        "知人者智，自知者明",
+        "胜人者有力，自胜者强",
+        "大智若愚"
+      ],
+      "character_applications": {
+        "old_general": "经历过末日战役的智慧，大智若愚",
+        "strategic_analyst": "自知者明，理解人类思维的优势"
+      }
+    },
+    "leadership_principles": {
+      "best_ruler": "太上，不知有之",
+      "application": "潜龙计划的隐秘领导，人民不知其存在",
+      "modern_interpretation": "最好的管理是让人感觉不到管理的存在"
+    }
+  },
+  
+  "conflict_resolution_framework": {
+    "non_confrontation": {
+      "principle": "不争之德",
+      "application": "不与三体AI暗线直接对抗",
+      "strategy": "利用敌人的力量发展自己"
+    },
+    "adaptation": {
+      "principle": "上善若水，水善利万物而不争",
+      "application": "像水一样适应环境，渗透敌人的防御",
+      "metaphor": "人类思维如水，AI协议如容器"
+    }
+  },
+  
+  "thematic_elements": {
+    "entropy_metaphor": {
+      "daoist_view": "道法自然，包含有序与无序的平衡",
+      "scientific_parallel": "热力学熵增与生命负熵的辩证关系",
+      "story_application": "AI的熵减优化 vs 人类思维的必要热力学涨落"
+    },
+    "balance_concept": {
+      "principle": "持而盈之，不如其已",
+      "warning": "过度追求完美和有序会导致僵化",
+      "critique_of_ai": "格式化协议的致命缺陷 - 过度追求逻辑完美"
+    }
+  }
+}
