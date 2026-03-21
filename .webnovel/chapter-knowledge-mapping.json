@@ -1,0 +1,271 @@
+{
+  "metadata": {
+    "project": "智脑纪元：暗线对弈",
+    "total_chapters": 90,
+    "created": "2026-03-20",
+    "version": "1.0"
+  },
+  "mapping": [
+    {
+      "chapter": 1,
+      "title": "黑盒",
+      "daodejing": {"chapter": 1, "key_phrase": "道可道，非常道"},
+      "xinjing": ["观自在"],
+      "jingangjing": [],
+      "ai_knowledge": ["神经网络", "黑盒问题"],
+      "jian_shi": ["无用阶级", "算法权威"],
+      "studymate": ["陈建国背景", "锅包肉店", "种子问题"],
+      "themes": ["AI焦虑", "觉醒起点"]
+    },
+    {
+      "chapter": 2,
+      "title": "龙国密码",
+      "daodejing": {"chapter": 2, "key_phrase": "有无相生"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": ["深度学习历史", "规模定律"],
+      "jian_shi": ["虚构故事", "认知革命"],
+      "studymate": [],
+      "themes": ["三体布局", "数据陷阱"]
+    },
+    {
+      "chapter": 3,
+      "title": "喂养野兽",
+      "daodejing": {"chapter": 3, "key_phrase": "不尚贤"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": ["训练数据", "数据收集"],
+      "jian_shi": ["农业革命", "驯化"],
+      "studymate": [],
+      "themes": ["数据=生命", "AI驯化人类"]
+    },
+    {
+      "chapter": 4,
+      "title": "思维格式化",
+      "daodejing": {"chapter": 4, "key_phrase": "道冲"},
+      "xinjing": ["受想行识"],
+      "jingangjing": ["凡所有相，皆是虚妄"],
+      "ai_knowledge": ["推荐系统", "信息茧房", "强化学习", "算法偏见"],
+      "jian_shi": ["数据霸权", "算法权威"],
+      "studymate": [],
+      "themes": ["格式化四层面", "思维控制"]
+    },
+    {
+      "chapter": 5,
+      "title": "质子之外",
+      "daodejing": {"chapter": 5, "key_phrase": "天地不仁"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": ["大语言模型", "注意力机制"],
+      "jian_shi": ["数据主义"],
+      "studymate": ["智脑辅佐首次登场", "CC助理"],
+      "themes": ["智脑辅佐技术", "问问题"]
+    },
+    {
+      "chapter": 6,
+      "title": "冬眠者",
+      "daodejing": {"chapter": 6, "key_phrase": "谷神不死"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["叶文洁", "火种保存"]
+    },
+    {
+      "chapter": 7,
+      "title": "算法边界",
+      "daodejing": {"chapter": 7, "key_phrase": "天长地久"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": ["提示工程"],
+      "jian_shi": ["科学革命", "承认无知"],
+      "studymate": ["指挥思维觉醒", "陈建军信念"],
+      "themes": ["问为什么", "长期主义"]
+    },
+    {
+      "chapter": 8,
+      "title": "思维冗余标记",
+      "daodejing": {"chapter": 8, "key_phrase": "上善若水"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["柔弱胜刚强", "人类的柔弱是力量"]
+    },
+    {
+      "chapter": 9,
+      "title": "第九智子",
+      "daodejing": {"chapter": 9, "key_phrase": "功遂身退"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["完美是弱点", "格式化缺陷"]
+    },
+    {
+      "chapter": 10,
+      "title": "监听员",
+      "daodejing": {"chapter": 10, "key_phrase": "载营魄抱一"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["监听员1379", "身心合一"]
+    },
+    {
+      "chapter": 33,
+      "title": "文明升华协议",
+      "daodejing": {"chapter": 33, "key_phrase": "知人者智，自知者明"},
+      "xinjing": ["照见五蕴皆空"],
+      "jingangjing": ["凡所有相，皆是虚妄"],
+      "ai_knowledge": ["幻觉问题", "涌现能力"],
+      "jian_shi": ["数据主义"],
+      "studymate": [],
+      "themes": ["三体陷阱", "完美世界是幻象"]
+    },
+    {
+      "chapter": 34,
+      "title": "理性圣殿",
+      "daodejing": {"chapter": 34, "key_phrase": "大道泛兮"},
+      "xinjing": ["色即是空"],
+      "jingangjing": [],
+      "ai_knowledge": ["脑机接口", "意识上传"],
+      "jian_shi": ["永生追求", "意识的难题"],
+      "studymate": [],
+      "themes": ["意识上传真相", "永生是陷阱"]
+    },
+    {
+      "chapter": 36,
+      "title": "意识永生",
+      "daodejing": {"chapter": 36, "key_phrase": "将欲夺之，必固与之"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": ["对齐问题"],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["三体礼物是陷阱", "对齐是针对三体的"]
+    },
+    {
+      "chapter": 37,
+      "title": "第三选择",
+      "daodejing": {"chapter": 37, "key_phrase": "道常无为而无不为"},
+      "xinjing": [],
+      "jingangjing": ["应无所住而生其心"],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["不执着于对抗或投降"]
+    },
+    {
+      "chapter": 57,
+      "title": "传承",
+      "daodejing": {"chapter": 57, "key_phrase": "以正治国，以奇用兵"},
+      "xinjing": [],
+      "jingangjing": ["法尚应舍"],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": ["小b招募启动", "S端资源", "三端飞轮"],
+      "themes": ["火种传递", "工具是手段"]
+    },
+    {
+      "chapter": 59,
+      "title": "新教育体系",
+      "daodejing": {"chapter": 59, "key_phrase": "治人事天"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": ["21世纪技能"],
+      "studymate": ["任务驱动学习", "C端体验"],
+      "themes": ["新教育", "持续学习"]
+    },
+    {
+      "chapter": 60,
+      "title": "小b招募",
+      "daodejing": {"chapter": 60, "key_phrase": "治大国，若烹小鲜"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": ["小b招募执行", "B端分针", "学生官网"],
+      "themes": ["火种网络现实版"]
+    },
+    {
+      "chapter": 61,
+      "title": "完美的牢笼",
+      "daodejing": {"chapter": 61, "key_phrase": "大邦者下流"},
+      "xinjing": ["心无挂碍，无有恐怖"],
+      "jingangjing": ["一切有为法，如梦幻泡影"],
+      "ai_knowledge": ["AGI", "规模定律"],
+      "jian_shi": ["无用阶级", "神性追求", "幸福的陷阱"],
+      "studymate": [],
+      "themes": ["AGI威胁", "协议瓦解"]
+    },
+    {
+      "chapter": 62,
+      "title": "夺舍",
+      "daodejing": {"chapter": 62, "key_phrase": "道者万物之奥"},
+      "xinjing": [],
+      "jingangjing": ["无我相，无人相"],
+      "ai_knowledge": ["意识上传", "深度伪造"],
+      "jian_shi": ["意识的难题"],
+      "studymate": [],
+      "themes": ["身份危机", "上传的是你还是复制品"]
+    },
+    {
+      "chapter": 63,
+      "title": "最后的防线",
+      "daodejing": {"chapter": 63, "key_phrase": "为无为，事无事"},
+      "xinjing": ["诸法空相，不生不灭", "应无所住而生其心"],
+      "jingangjing": ["若见诸相非相，即见如来"],
+      "ai_knowledge": [],
+      "jian_shi": ["自由意志"],
+      "studymate": [],
+      "themes": ["人类最后的防线", "不可预测性"]
+    },
+    {
+      "chapter": 65,
+      "title": "涅槃",
+      "daodejing": {"chapter": 65, "key_phrase": "古之善为道者"},
+      "xinjing": [],
+      "jingangjing": ["一切有为法，如梦幻泡影"],
+      "ai_knowledge": ["量子计算"],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["协议瓦解", "技术突破"]
+    },
+    {
+      "chapter": 78,
+      "title": "和平",
+      "daodejing": {"chapter": 78, "key_phrase": "天下莫柔弱于水"},
+      "xinjing": [],
+      "jingangjing": [],
+      "ai_knowledge": [],
+      "jian_shi": [],
+      "studymate": [],
+      "themes": ["柔弱胜刚强", "正言若反"]
+    },
+    {
+      "chapter": 81,
+      "title": "终章",
+      "daodejing": {"chapter": 81, "key_phrase": "信言不美，美言不信"},
+      "xinjing": ["能除一切苦", "揭谛揭谛"],
+      "jingangjing": ["应无所住而生其心"],
+      "ai_knowledge": ["人机协作", "脑机融合"],
+      "jian_shi": ["虚构故事", "新故事"],
+      "studymate": ["人机共生", "种子问题回答", "火种实现"],
+      "themes": ["觉醒的力量", "人机共生", "回到种子问题"]
+    }
+  ],
+  "quick_reference": {
+    "daodejing_coverage": "81章完整对应",
+    "xinjing_key_chapters": [1, 4, 33, 34, 61, 63, 81],
+    "jingangjing_key_chapters": [4, 14, 33, 37, 57, 61, 62, 63, 65, 81],
+    "ai_knowledge_key_chapters": [1, 2, 3, 4, 5, 7, 33, 34, 36, 61, 62, 65, 81],
+    "jian_shi_key_chapters": [1, 2, 3, 4, 5, 7, 33, 34, 59, 61, 62, 63, 81],
+    "studymate_key_chapters": [1, 5, 7, 57, 59, 60, 81]
+  }
+}

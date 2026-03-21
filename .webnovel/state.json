@@ -1,0 +1,42 @@
+{
+  "project": {
+    "title": "智脑纪元：暗线对弈",
+    "slug": "santi-waipian",
+    "genre": "科幻/哲学小说",
+    "target_words": 300000,
+    "target_chapters": 90,
+    "one_liner": "正统三体世界观下的隐秘战争史诗，AI时代人类与三体的终极暗线对弈",
+    "core_conflict": "人类是保持独立思考，还是让渡决策权给AI？",
+    "platform": "原创首发"
+  },
+  "world": {
+    "scale": "全球",
+    "factions": "潜龙计划 vs 思维格式化协议",
+    "power_system": "独立思考能力（问'为什么'）",
+    "time_setting": "威慑纪元至威慑后100年"
+  },
+  "protagonist": {
+    "name": "陈建国",
+    "background": "武警指挥专业出身，十年执念于脑机接口/AI文明",
+    "core_belief": "保持提问，保持不可预测，就是人类对宇宙最硬的底气",
+    "model": "S端（时针）+ B端（分针）+ C端（秒针）三端飞轮"
+  },
+  "constraints": {
+    "anti_trope": "AI不是工具而是对手，答案不是智慧，问'为什么'才是",
+    "hard_constraints": [
+      "智脑辅佐系统核心功能是'问问题'而非'给答案'",
+      "'0.3%临界点'必须是全书核心概念",
+      "每个章节必须融入对应的道德经智慧",
+      "监听员1379视角必须贯穿全书",
+      "终章必须回到'你为什么要学习'这个种子问题",
+      "陈建国的武警指挥背景必须在关键章节体现"
+    ]
+  },
+  "status": {
+    "chapters_completed": 48,
+    "chapters_in_progress": 0,
+    "chapters_remaining": 42,
+    "last_updated": "2026-03-21",
+    "last_chapter": "第19章「潜龙之二」"
+  }
+}

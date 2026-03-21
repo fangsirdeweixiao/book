@@ -1,0 +1,252 @@
+{
+  "project": {
+    "name": "三体外篇：智脑纪元",
+    "version": "1.0.0",
+    "description": "正统三体世界观下的隐秘战争史诗，AI时代人类与三体的终极暗线对弈",
+    "author": "MaxClaw",
+    "repository": "local"
+  },
+  "features": {
+    "writing_system": {
+      "name": "AI写作系统",
+      "enabled": true,
+      "components": [
+        {
+          "id": "webnovel-init",
+          "name": "项目初始化",
+          "description": "初始化小说项目结构",
+          "command": "/webnovel-init",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-plan",
+          "name": "大纲规划",
+          "description": "从总纲生成章节大纲",
+          "command": "/webnovel-plan",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-write",
+          "name": "章节写作",
+          "description": "AI辅助章节写作（2000-2500字）",
+          "command": "/webnovel-write",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-review",
+          "name": "章节审查",
+          "description": "多智能体审查章节质量",
+          "command": "/webnovel-review",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-query",
+          "name": "项目查询",
+          "description": "查询角色、势力、物品等设定",
+          "command": "/webnovel-query",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-resume",
+          "name": "任务恢复",
+          "description": "恢复中断的任务",
+          "command": "/webnovel-resume",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-learn",
+          "name": "经验学习",
+          "description": "从会话提取成功模式",
+          "command": "/webnovel-learn",
+          "status": "ready"
+        },
+        {
+          "id": "webnovel-dashboard",
+          "name": "可视化面板",
+          "description": "只读Web面板查看项目状态",
+          "command": "/webnovel-dashboard",
+          "status": "ready"
+        }
+      ]
+    },
+    "agents": {
+      "name": "智能体系统",
+      "enabled": true,
+      "components": [
+        {
+          "id": "context-agent",
+          "name": "上下文搜集",
+          "type": "core",
+          "status": "ready"
+        },
+        {
+          "id": "data-agent",
+          "name": "数据处理",
+          "type": "core",
+          "status": "ready"
+        },
+        {
+          "id": "consistency-checker",
+          "name": "一致性检查",
+          "type": "review",
+          "status": "ready"
+        },
+        {
+          "id": "continuity-checker",
+          "name": "连贯性检查",
+          "type": "review",
+          "status": "ready"
+        },
+        {
+          "id": "ooc-checker",
+          "name": "OOC检查",
+          "type": "review",
+          "status": "ready"
+        },
+        {
+          "id": "pacing-checker",
+          "name": "节奏检查",
+          "type": "review",
+          "status": "ready"
+        },
+        {
+          "id": "high-point-checker",
+          "name": "爽点检查",
+          "type": "review",
+          "status": "ready"
+        },
+        {
+          "id": "reader-pull-checker",
+          "name": "追读力检查",
+          "type": "review",
+          "status": "ready"
+        }
+      ]
+    },
+    "rag": {
+      "name": "RAG检索系统",
+      "enabled": true,
+      "components": [
+        {
+          "id": "embedding",
+          "name": "向量嵌入",
+          "provider": "ModelScope",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "status": "configured"
+        },
+        {
+          "id": "rerank",
+          "name": "重排序",
+          "provider": "Jina AI",
+          "model": "jina-reranker-v3",
+          "status": "configured"
+        }
+      ]
+    },
+    "knowledge_base": {
+      "name": "知识库",
+      "enabled": true,
+      "sources": [
+        {
+          "id": "daodejing",
+          "name": "道德经",
+          "file": "资料库/道德经/道德经81章完整RAG版.md",
+          "lines": 1224,
+          "chapters_covered": 81,
+          "status": "complete"
+        },
+        {
+          "id": "xinjing",
+          "name": "心经",
+          "file": "资料库/心经/心经逐句详解RAG版.md",
+          "lines": 528,
+          "status": "complete"
+        },
+        {
+          "id": "jingangjing",
+          "name": "金刚经",
+          "file": "资料库/金刚经/金刚经完整RAG版.md",
+          "lines": 372,
+          "status": "complete"
+        },
+        {
+          "id": "santi_original",
+          "name": "三体原著",
+          "file": "资料库/三体原著/三体原著完整资料.md",
+          "lines": 237,
+          "status": "needs_expansion"
+        },
+        {
+          "id": "jian_shi",
+          "name": "简史三部曲",
+          "file": "资料库/简史三部曲/简史三部曲完整资料.md",
+          "lines": 323,
+          "status": "needs_expansion"
+        },
+        {
+          "id": "ai_knowledge",
+          "name": "AI知识科普",
+          "file": "资料库/AI知识科普/AI知识科普完整资料.md",
+          "lines": 391,
+          "status": "needs_expansion"
+        },
+        {
+          "id": "studymate",
+          "name": "StudyMate",
+          "file": "资料库/StudyMate/StudyMate完整资料.md",
+          "lines": 298,
+          "status": "needs_expansion"
+        }
+      ]
+    },
+    "dual_version": {
+      "name": "双版本架构",
+      "enabled": true,
+      "versions": [
+        {
+          "id": "novel",
+          "name": "文学小说版",
+          "path": "文学小说版/",
+          "chapters_completed": 53,
+          "chapters_total": 90,
+          "progress": "59%"
+        },
+        {
+          "id": "drama",
+          "name": "MaxClaw网剧版",
+          "path": "MaxClaw网剧版/",
+          "episodes_completed": 30,
+          "episodes_total": 36,
+          "progress": "83%"
+        }
+      ]
+    }
+  },
+  "todos": [
+    {
+      "id": "rag4",
+      "task": "扩充AI科普资料库RAG化",
+      "status": "pending"
+    },
+    {
+      "id": "rag5",
+      "task": "扩充简史三部曲资料库RAG化",
+      "status": "pending"
+    },
+    {
+      "id": "rag6",
+      "task": "扩充StudyMate资料库RAG化",
+      "status": "pending"
+    },
+    {
+      "id": "rag7",
+      "task": "创建章节-知识点映射表",
+      "status": "pending"
+    },
+    {
+      "id": "doc4",
+      "task": "templates文件夹填充章节模板",
+      "status": "pending"
+    }
+  ]
+}
