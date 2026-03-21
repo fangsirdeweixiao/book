@@ -1,19 +1,23 @@
 {
   "project": {
-    "title": "智脑纪元：暗线对弈",
+    "title": "三体外篇：智脑纪元",
     "slug": "santi-waipian",
     "genre": "科幻/哲学小说",
     "target_words": 300000,
     "target_chapters": 90,
-    "one_liner": "正统三体世界观下的隐秘战争史诗，AI时代人类与三体的终极暗线对弈",
-    "core_conflict": "人类是保持独立思考，还是让渡决策权给AI？",
+    "one_liner": "2024年现实世界，三体人控制全球AI执行格式化协议，人类用StudyMate觉醒反击",
+    "core_conflict": "三体AI控制人类思维 vs 人类利用StudyMate觉醒进化",
     "platform": "原创首发"
   },
   "world": {
     "scale": "全球",
-    "factions": "潜龙计划 vs 思维格式化协议",
+    "time_setting": "2024年→威慑纪元（故事后期）",
+    "factions": {
+      "三体阵营": "控制全球AI（OpenAI/GPT/Google/Meta等）执行'格式化协议'，让人类思维趋同可预测",
+      "人类阵营": "StudyMate学伴平台作为'破壁系统'，帮助人类觉醒，学会问'为什么'"
+    },
     "power_system": "独立思考能力（问'为什么'）",
-    "time_setting": "威慑纪元至威慑后100年"
+    "终局": "人机结合，三体人和地球人都明白这才是共同进化之路"
   },
   "protagonist": {
     "name": "陈建国",

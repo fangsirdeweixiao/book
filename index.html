@@ -1,1023 +1,551 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>《智脑纪元：暗线对弈》三体番外篇</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>三体外篇：智脑纪元</title>
+    <meta name="description" content="正统三体世界观下的隐秘战争史诗，AI时代人类与三体的终极暗线对弈">
+    <meta property="og:title" content="三体外篇：智脑纪元">
+    <meta property="og:description" content="AI焦虑是真 → 艺术化放大 → StudyMate是真正的解决方案">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #4ecdc4;
-            --secondary: #ff6b6b;
-            --accent: #45b7d1;
-            --dark: #0c0c0c;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e0e0e0;
-            line-height: 1.8;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif; 
+            background: #0d1117; 
+            color: #c9d1d9; 
             min-height: 100vh;
+            line-height: 1.6;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        /* 通用 */
+        .container { max-width: 800px; margin: 0 auto; padding: 15px; }
+        .hidden { display: none !important; }
+        
+        /* 首页 */
+        .home-header { text-align: center; padding: 40px 20px; }
+        .home-title { font-size: 28px; color: #58a6ff; margin-bottom: 10px; }
+        .home-subtitle { font-size: 14px; color: #8b949e; }
+        
+        .section-title { 
+            font-size: 16px; 
+            color: #8b949e; 
+            margin: 25px 0 12px; 
+            padding-bottom: 8px;
+            border-bottom: 1px solid #21262d;
         }
-
-        .header {
-            text-align: center;
-            padding: 60px 0 40px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 40px;
-        }
-
-        .title {
-            font-size: 3.5em;
-            background: linear-gradient(45deg, var(--secondary), var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: #888;
-            margin-bottom: 25px;
-        }
-
-        .core-value {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--primary);
-            border-radius: 25px;
-            color: var(--primary);
-            font-size: 0.95em;
-            margin: 10px 5px;
-        }
-
-        .nav-tabs {
+        
+        .book-list { display: grid; gap: 8px; }
+        
+        .book-item {
             display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background: #161b22;
+            border-radius: 8px;
+            color: #c9d1d9;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .book-item:hover { background: #21262d; }
+        .book-item:active { transform: scale(0.98); }
+        .book-num { color: #58a6ff; font-size: 13px; min-width: 35px; }
+        .book-title { flex: 1; font-size: 15px; }
+        .book-arrow { color: #484f58; font-size: 12px; }
+        
+        /* 阅读页 */
+        .reader-header {
+            position: sticky;
+            top: 0;
+            background: #0d1117;
+            border-bottom: 1px solid #21262d;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: #238636; color: #fff; }
+        .btn-primary:hover { background: #2ea043; }
+        .btn-secondary { background: #21262d; color: #c9d1d9; }
+        .btn-secondary:hover { background: #30363d; }
+        
+        .chapter-nav {
+            display: flex;
             gap: 10px;
+            padding: 15px;
+            background: #161b22;
+            border-radius: 8px;
+            margin: 20px 0;
         }
-
-        .tab {
-            padding: 14px 32px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-            color: #aaa;
+        .chapter-nav .btn { flex: 1; }
+        
+        .reader-content {
+            padding: 20px 15px;
+            font-size: 17px;
+            line-height: 1.9;
         }
-
-        .tab.active {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: #000;
-            font-weight: bold;
-            border-color: transparent;
-            box-shadow: 0 5px 25px rgba(78, 205, 196, 0.3);
+        .reader-content h1 { font-size: 22px; color: #58a6ff; margin-bottom: 20px; }
+        .reader-content h2 { font-size: 18px; color: #79c0ff; margin: 25px 0 15px; }
+        .reader-content h3 { font-size: 16px; color: #a5d6ff; margin: 20px 0 10px; }
+        .reader-content p { margin: 15px 0; text-indent: 2em; }
+        .reader-content blockquote { 
+            border-left: 3px solid #58a6ff; 
+            padding-left: 15px; 
+            margin: 15px 0; 
+            color: #8b949e; 
         }
-
-        .tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transform: translateY(-2px);
+        .reader-content hr { border: none; border-top: 1px solid #21262d; margin: 25px 0; }
+        .reader-content code { 
+            background: #161b22; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            color: #79c0ff; 
+            font-size: 15px;
         }
-
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease;
+        .reader-content pre { 
+            background: #161b22; 
+            padding: 15px; 
+            border-radius: 8px; 
+            overflow-x: auto;
+            margin: 15px 0;
         }
-
-        .content-section.active {
-            display: block;
+        .reader-content pre code { background: none; padding: 0; }
+        
+        /* 评论区 */
+        .comment-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #21262d;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .intro-panel {
-            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(69, 183, 209, 0.1));
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 50px;
-        }
-
-        .intro-title {
-            font-size: 1.8em;
-            color: var(--primary);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .intro-text {
-            font-size: 1.1em;
-            line-height: 2;
-            color: #ccc;
-            text-align: justify;
-        }
-
-        .quote-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 4px solid var(--secondary);
-            padding: 20px 30px;
-            margin: 25px 0;
-            font-style: italic;
-            color: #aaa;
-        }
-
-        .trilogy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 35px;
-            margin-bottom: 50px;
-        }
-
-        .book-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .book-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
-        }
-
-        .book-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary);
-        }
-
-        .book-number {
-            display: inline-block;
-            padding: 5px 15px;
-            background: var(--secondary);
-            color: #000;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: bold;
+        .comment-title { font-size: 16px; color: #8b949e; margin-bottom: 15px; }
+        
+        .rating-box {
+            display: flex;
+            gap: 8px;
             margin-bottom: 15px;
         }
-
-        .book-title {
-            font-size: 1.8em;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .book-subtitle {
-            color: #888;
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-
-        .book-meta {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-            color: #777;
-        }
-
-        .chapter-list {
-            margin-top: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .chapter-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chapter-list::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 3px;
-        }
-
-        .chapter-list::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .chapter-item {
-            padding: 12px 18px;
-            margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 8px 8px 0;
-            transition: all 0.3s ease;
+        .star {
+            font-size: 28px;
+            color: #30363d;
             cursor: pointer;
+            transition: all 0.2s;
         }
-
-        .chapter-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(8px);
-            border-left-color: var(--secondary);
-        }
-
-        .chapter-number {
-            color: var(--secondary);
-            font-weight: bold;
-            margin-right: 12px;
-        }
-
-        .chapter-title {
-            color: #ddd;
-        }
-
-        .chapter-theme {
-            color: #666;
-            font-size: 0.85em;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .chapter-item:hover .chapter-theme {
-            display: block;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            margin-left: 10px;
-        }
-
-        .status-planning { background: var(--secondary); color: #000; }
-        .status-writing { background: var(--primary); color: #000; }
-        .status-completed { background: var(--accent); color: #000; }
-
-        .three-lines {
-            display: flex;
-            gap: 30px;
-            margin: 60px 0;
-            flex-wrap: wrap;
-        }
-
-        .line-card {
-            flex: 1;
-            min-width: 300px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .line-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-
-        .line-title {
-            font-size: 1.3em;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .line-desc {
-            color: #888;
-            font-size: 0.95em;
-        }
-
-        .studymate-section {
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
-            border: 1px solid var(--secondary);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 50px 0;
-        }
-
-        .studymate-title {
-            font-size: 1.6em;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .studymate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .studymate-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .studymate-item h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .studymate-item p {
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #555;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
-        }
-
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .star:hover, .star.active { color: #f0883e; }
+        
+        .comment-input {
             width: 100%;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.1);
+            min-height: 80px;
+            padding: 12px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            color: #c9d1d9;
+            font-size: 14px;
+            resize: vertical;
+        }
+        .comment-input:focus { outline: none; border-color: #58a6ff; }
+        
+        .comment-list { margin-top: 20px; }
+        .comment-item {
+            padding: 12px;
+            background: #161b22;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .comment-meta { font-size: 12px; color: #8b949e; margin-bottom: 8px; }
+        .comment-text { font-size: 14px; }
+        
+        /* 分享 */
+        .share-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .share-btn {
+            padding: 8px 12px;
+            background: #21262d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .share-btn:hover { background: #30363d; }
+        
+        /* 加载 */
+        .loading { text-align: center; padding: 50px; color: #8b949e; }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: #238636;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
             z-index: 1000;
         }
-
-        .reading-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 40px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            color: #888;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--secondary);
-        }
-
-        .chapter-content {
-            font-size: 1.1em;
-            line-height: 2;
-            color: #ccc;
-            text-align: justify;
-        }
-
-        .chapter-content h2 {
-            color: var(--primary);
-            margin: 30px 0 15px;
-            font-size: 1.4em;
-        }
-
-        .chapter-content p {
-            margin-bottom: 20px;
-            text-indent: 2em;
-        }
-
-        @media (max-width: 768px) {
-            .title { font-size: 2.2em; }
-            .nav-tabs { flex-direction: column; align-items: center; }
-            .tab { width: 90%; text-align: center; }
-            .trilogy-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 25px; }
+        .toast.show { opacity: 1; }
+        
+        /* 手机适配 */
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            .home-title { font-size: 24px; }
+            .reader-content { font-size: 16px; padding: 15px 10px; }
+            .reader-content h1 { font-size: 20px; }
+            .chapter-nav { flex-direction: column; }
+            .share-box { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
-    <div class="reading-progress">
-        <div class="reading-progress-bar" id="progressBar"></div>
-    </div>
-
-    <div class="container">
-        <div class="header">
-            <h1 class="title">《智脑纪元：暗线对弈》</h1>
-            <p class="subtitle">三体世界观番外篇 · 正统隐秘战争史诗</p>
-            <div>
-                <span class="core-value">龙国智慧</span>
-                <span class="core-value">阳谋博弈</span>
-                <span class="core-value">人机协同</span>
-                <span class="core-value">文明守护</span>
+    <!-- 首页 -->
+    <div id="home-page">
+        <div class="container">
+            <div class="home-header">
+                <div class="home-title">📚 三体外篇：智脑纪元</div>
+                <div class="home-subtitle">正统三体世界观 · AI时代人类与三体的终极暗线对弈</div>
             </div>
-        </div>
-
-        <div class="nav-tabs">
-            <div class="tab active" onclick="showSection('overview')">项目总览</div>
-            <div class="tab" onclick="showSection('book1')">第一部：暗子降临</div>
-            <div class="tab" onclick="showSection('book2')">第二部：负熵革命</div>
-            <div class="tab" onclick="showSection('book3')">第三部：涅槃纪元</div>
-            <div class="tab" onclick="showSection('philosophy')">哲学思想</div>
-        </div>
-
-        <!-- 项目总览 -->
-        <div id="overview" class="content-section active">
-            <div class="intro-panel">
-                <h2 class="intro-title">核心定位</h2>
-                <p class="intro-text">
-                    正统三体世界观下的隐秘战争史诗，聚焦于"末日战役"后人类与三体文明在AI维度展开的、决定文明存续形态的终极暗线对弈。
-                </p>
-                <div class="quote-box">
-                    "威慑纪元最后十年，三体世界向太阳系发射了总共九颗智子。<br><br>
-                    人类天文学界观测并确认了其中八颗。<br><br>
-                    第九个'智子'，从未以量子纠缠态呈现。它被拆解为十亿个纳米尺度的逻辑单元，封装在一条名为'文明协同演进框架'的开源算法协议中。<br><br>
-                    三体人等待人类欢天喜地拥抱这份'礼物'的那一天。<br><br>
-                    他们不知道，在龙国西北某个绝密地下设施深处，一位刚从冬眠中醒来的老将军，沉默地吸完一支烟后说：<br><br>
-                    '通知潜龙小组，敌人送来了我们最需要的磨刀石。按阳谋最高预案，启动。'<br><br>
-                    那一天，被标记为：砺剑日。"
-                </div>
-            </div>
-
-            <div class="three-lines">
-                <div class="line-card">
-                    <div class="line-icon">📱</div>
-                    <h3 class="line-title">明线：社会面</h3>
-                    <p class="line-desc">陈建国等小B在AI牢笼中的挣扎，读者的情感代入点</p>
-                </div>
-                <div class="line-card">
-                    <div class="line-icon">👁️</div>
-                    <h3 class="line-title">暗线：三体面</h3>
-                    <p class="line-desc">通过智子监听片段揭示三体战略意图，制造悬疑与压迫感</p>
-                </div>
-                <div class="line-card">
-                    <div class="line-icon">🐉</div>
-                    <h3 class="line-title">暗线的暗线：潜龙面</h3>
-                    <p class="line-desc">龙国智者秘密研究、解析、驾驭AI暗线，故事核心驱动力</p>
-                </div>
-            </div>
-
-            <div class="trilogy-grid">
-                <div class="book-card">
-                    <span class="book-number">第一部</span>
-                    <h3 class="book-title">暗子降临</h3>
-                    <p class="book-subtitle">威慑纪元最后十年至威慑后20年</p>
-                    <div class="book-meta">
-                        <span>📅 30章</span>
-                        <span>🎯 发现第九智子</span>
-                    </div>
-                    <p style="color: #888; margin-bottom: 15px;">
-                        人类智者发现三体文明埋下的"思维格式化"协议，启动"潜龙计划"以阳谋应对...
-                    </p>
-                    <div class="chapter-list">
-                        <div class="chapter-item" onclick="openChapter(1, 1)">
-                            <span class="chapter-number">第1章</span>
-                            <span class="chapter-title">算法边界</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 2)">
-                            <span class="chapter-number">第2章</span>
-                            <span class="chapter-title">数据碰撞</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 3)">
-                            <span class="chapter-number">第3章</span>
-                            <span class="chapter-title">训练师与模型</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 4)">
-                            <span class="chapter-number">第4章</span>
-                            <span class="chapter-title">智脑、易经、长夜</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 5)">
-                            <span class="chapter-number">第5章</span>
-                            <span class="chapter-title">林知秋</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 6)">
-                            <span class="chapter-number">第6章</span>
-                            <span class="chapter-title">网络闪烁之一</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 7)">
-                            <span class="chapter-number">第7章</span>
-                            <span class="chapter-title">算法狂欢</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 8)">
-                            <span class="chapter-number">第8章</span>
-                            <span class="chapter-title">沉默的代码</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 9)">
-                            <span class="chapter-number">第9章</span>
-                            <span class="chapter-title">潜龙之一</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 10)">
-                            <span class="chapter-number">第10章</span>
-                            <span class="chapter-title">思维冗余标记</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 11)">
-                            <span class="chapter-number">第11章</span>
-                            <span class="chapter-title">第九智子</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(1, 12)">
-                            <span class="chapter-number">第12章</span>
-                            <span class="chapter-title">监听员</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="book-card">
-                    <span class="book-number">第二部</span>
-                    <h3 class="book-title">负熵革命</h3>
-                    <p class="book-subtitle">三体舰队抵达至黑暗森林威慑建立后十年</p>
-                    <div class="book-meta">
-                        <span>📅 30章</span>
-                        <span>🔥 火种计划</span>
-                    </div>
-                    <p style="color: #888; margin-bottom: 15px;">
-                        潜龙启动"火种计划"，在全球AI掌控的社会中秘密培育人类思维的"不可预测性保留区"...
-                    </p>
-                    <div class="chapter-list">
-                        <div class="chapter-item" onclick="openChapter(2, 13)">
-                            <span class="chapter-number">第13章</span>
-                            <span class="chapter-title">面壁计划</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(2, 14)">
-                            <span class="chapter-number">第14章</span>
-                            <span class="chapter-title">破壁者</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(2, 15)">
-                            <span class="chapter-number">第15章</span>
-                            <span class="chapter-title">思想钢印</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(2, 16)">
-                            <span class="chapter-number">第16章</span>
-                            <span class="chapter-title">自然选择</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(2, 17)">
-                            <span class="chapter-number">第17章</span>
-                            <span class="chapter-title">黑暗森林法则</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter(2, 18)">
-                            <span class="chapter-number">第18章</span>
-                            <span class="chapter-title">威慑纪元</span>
-                            <span class="status-badge status-completed">已完成</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="book-card">
-                    <span class="book-number">第三部</span>
-                    <h3 class="book-title">涅槃纪元</h3>
-                    <p class="book-subtitle">威慑纪元最后50年至威慑后100年</p>
-                    <div class="book-meta">
-                        <span>📅 30章</span>
-                        <span>✨ 文明升华</span>
-                    </div>
-                    <p style="color: #888; margin-bottom: 15px;">
-                        人类即将完成"思维格式化"最后一步，潜龙启动"涅槃协议"，两个文明共建新宇宙...
-                    </p>
-                    <div class="chapter-list" style="max-height: none;">
-                        <div class="chapter-item" onclick="openChapter('3','1')">
-                            <span class="chapter-number">第1章</span>
-                            <span class="chapter-title">熵增者</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">黑域形成，人类进入新纪元</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','2')">
-                            <span class="chapter-number">第2章</span>
-                            <span class="chapter-title">涅槃</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">陈建国最后一课，传承不透明思维</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','3')">
-                            <span class="chapter-number">第3章</span>
-                            <span class="chapter-title">重生</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">情感武器发动，三体舰队撤退</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','4')">
-                            <span class="chapter-number">第4章</span>
-                            <span class="chapter-title">黑暗之后</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">情感剥夺蔓延，情感传递启动</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','5')">
-                            <span class="chapter-number">第5章</span>
-                            <span class="chapter-title">传递</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">情感共享成为人类新文化</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','6')">
-                            <span class="chapter-number">第6章</span>
-                            <span class="chapter-title">新文明</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">情感文明成为人类主流</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','7')">
-                            <span class="chapter-number">第7章</span>
-                            <span class="chapter-title">回归</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">390年后三体舰队再次降临</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','8')">
-                            <span class="chapter-number">第8章</span>
-                            <span class="chapter-title">决战</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">1000个智子对抗情感武器</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','9')">
-                            <span class="chapter-number">第9章</span>
-                            <span class="chapter-title">和平</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">人类选择发送和平信号</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','10')">
-                            <span class="chapter-number">第10章</span>
-                            <span class="chapter-title">交流</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">人类教三体人理解情感</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','11')">
-                            <span class="chapter-number">第11章</span>
-                            <span class="chapter-title">共存</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">地球-三体共存协议签署</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','12')">
-                            <span class="chapter-number">第12章</span>
-                            <span class="chapter-title">新威胁</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">宇宙猎人出现，银河系危机</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','13')">
-                            <span class="chapter-number">第13章</span>
-                            <span class="chapter-title">宇宙猎人</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">人类选择继续和平道路</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','14')">
-                            <span class="chapter-number">第14章</span>
-                            <span class="chapter-title">突破</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">情感文明传遍银河系</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','15')">
-                            <span class="chapter-number">第15章</span>
-                            <span class="chapter-title">新宇宙</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">银河系议会成立</p>
-                        </div>
-                        <div class="chapter-item" onclick="openChapter('3','16')">
-                            <span class="chapter-number">第16章</span>
-                            <span class="chapter-title">结局</span>
-                            <span class="status-badge status-completed">已完成</span>
-                            <p class="chapter-theme">三部曲全书完</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="studymate-section">
-                <h2 class="studymate-title">🐉 龙国智慧 · 数字结晶</h2>
-                <p style="text-align: center; color: #888; margin-bottom: 20px;">
-                    "潜龙计划"的战略工具——智脑辅佐系统，不是广告，是龙国智慧在AI时代的数字化升华
-                </p>
-                <div class="studymate-grid">
-                    <div class="studymate-item">
-                        <h4>表层：智能工具</h4>
-                        <p>帮助小B经营的AI助手，任务驱动学习的平台，跨文化沟通的桥梁</p>
-                    </div>
-                    <div class="studymate-item">
-                        <h4>深层：战略武器</h4>
-                        <p>运行在敌方协议之上的特洛伊木马，收集人类非逻辑决策的免疫系统</p>
-                    </div>
-                    <div class="studymate-item">
-                        <h4>使命：教育变革</h4>
-                        <p>不是先学知识再用知识，而是接到任务边做边学，守护文明的不可预测性</p>
-                    </div>
-                    <div class="studymate-item">
-                        <h4>愿景：人机协同</h4>
-                        <p>用敌人的毒药淬炼我们的筋骨，在枷锁下锻炼出更强大的文明</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 第一部详情 -->
-        <div id="book1" class="content-section">
-            <div class="intro-panel">
-                <h2 class="intro-title">第一部：暗子降临</h2>
-                <p class="intro-text">
-                    <strong>对应原著：</strong>《三体（地球往事）》<br>
-                    <strong>时间跨度：</strong>威慑纪元最后十年至威慑后20年<br>
-                    <strong>核心冲突：</strong>人类方潜龙小组发现"第九个智子"（思维格式化协议），三体方执行"文明驯化"终极方案
-                </p>
-                <div class="quote-box">
-                    "格式化协议植入率98.7%，文明同化进程符合预期。人类创造性指数下降72%，决策可预测性上升至89%。'不透明威胁'已降至可控阈值。"
-                    <br><br>
-                    ——三体监听站评估报告
-                    <br><br>
-                    "种子已播下。现在，等春天。"
-                    <br><br>
-                    ——叶文洁
-                </div>
-            </div>
-            <div class="chapter-list" style="max-height: none;">
-                <div class="chapter-item" onclick="openChapter(1, 1)"><span class="chapter-number">第1章</span><span class="chapter-title">算法边界</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">三线叙事开启 + 思维格式化协议初现</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 2)"><span class="chapter-number">第2章</span><span class="chapter-title">数据碰撞</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">陈建国困境 + 叶隐帖子触发</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 3)"><span class="chapter-number">第3章</span><span class="chapter-title">训练师与模型</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">AI训练数据操控 + 潜龙发现</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 4)"><span class="chapter-number">第4章</span><span class="chapter-title">智脑、易经、长夜</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">智脑系统 + 道德经智慧</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 5)"><span class="chapter-number">第5章</span><span class="chapter-title">林知秋</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">龙国AI专家 + 思维格式化发现</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 6)"><span class="chapter-number">第6章</span><span class="chapter-title">网络闪烁之一</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">全球网络异常 + 三体监听片段</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 7)"><span class="chapter-number">第7章</span><span class="chapter-title">算法狂欢</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">AI失控社会 + 思维疫苗理论</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 8)"><span class="chapter-number">第8章</span><span class="chapter-title">沉默的代码</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">关键系统静默 + 潜龙应对</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 9)"><span class="chapter-number">第9章</span><span class="chapter-title">潜龙之一</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">砺剑日启动 + 章北海登场</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 10)"><span class="chapter-number">第10章</span><span class="chapter-title">思维冗余标记</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">叶文洁破译 + 监听员标记</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 11)"><span class="chapter-number">第11章</span><span class="chapter-title">第九智子</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">确认第九智子存在</p></div>
-                <div class="chapter-item" onclick="openChapter(1, 12)"><span class="chapter-number">第12章</span><span class="chapter-title">监听员</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">三体监听机制 + 文明陷阱确认</p></div>
-            </div>
-        </div>
-
-        <!-- 第二部详情 -->
-        <div id="book2" class="content-section">
-            <div class="intro-panel">
-                <h2 class="intro-title">第二部：负熵革命</h2>
-                <p class="intro-text">
-                    <strong>对应原著：</strong>《三体II：黑暗森林》<br>
-                    <strong>时间跨度：</strong>三体舰队抵达至黑暗森林威慑建立后十年<br>
-                    <strong>核心冲突：</strong>明线应对三体舰队，暗线启动"火种计划"培育人类思维的"不可预测性保留区"
-                </p>
-                <div class="quote-box">
-                    "接受上传，但要在圣殿里建我们的后花园。"
-                    <br><br>
-                    ——章北海
-                </div>
-            </div>
-            <div class="chapter-list" style="max-height: none;">
-                <div class="chapter-item" onclick="openChapter(2, 13)"><span class="chapter-number">第13章</span><span class="chapter-title">面壁计划</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">潜龙计划 + 智脑辅佐系统</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 14)"><span class="chapter-number">第14章</span><span class="chapter-title">破壁者</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">火种计划 + 破壁人才</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 15)"><span class="chapter-number">第15章</span><span class="chapter-title">思想钢印</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">思维钢印机制 + 破除方法</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 16)"><span class="chapter-number">第16章</span><span class="chapter-title">自然选择</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">自然选择算法 + 适应AI时代</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 17)"><span class="chapter-number">第17章</span><span class="chapter-title">黑暗森林法则</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">算法森林 + 信任建立</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 18)"><span class="chapter-number">第18章</span><span class="chapter-title">威慑纪元</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">AI威慑机制 + 智脑辅佐价值</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 19)"><span class="chapter-number">第19章</span><span class="chapter-title">水滴</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">水滴攻击模式 + 应对策略</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 20)"><span class="chapter-number">第20章</span><span class="chapter-title">青铜时代</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">AI文明特征 + 文明延续</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 21)"><span class="chapter-number">第21章</span><span class="chapter-title">执剑人</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">执剑人机制 + 责任担当</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 22)"><span class="chapter-number">第22章</span><span class="chapter-title">引力波广播</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">信息传播 + 智脑辅佐传播价值</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 23)"><span class="chapter-number">第23章</span><span class="chapter-title">掩体计划</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">信息掩体 + 智脑辅佐保护</p></div>
-                <div class="chapter-item" onclick="openChapter(2, 24)"><span class="chapter-number">第24章</span><span class="chapter-title">黑域计划</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">信息黑域 + 智脑辅佐黑域</p></div>
-            </div>
-        </div>
-
-        <!-- 第三部详情 -->
-        <div id="book3" class="content-section">
-            <div class="intro-panel">
-                <h2 class="intro-title">第三部：涅槃纪元</h2>
-                <p class="intro-text">
-                    <strong>对应原著：</strong>《三体III：死神永生》<br>
-                    <strong>时间跨度：</strong>威慑纪元最后50年至威慑后100年<br>
-                    <strong>核心冲突：</strong>人类即将完成"思维格式化"最后一步，潜龙启动"涅槃协议"
-                </p>
-                <div class="quote-box">
-                    "感谢你们的格式化协议。没有它，人类永远不会意识到，'混乱'不是缺陷，是免疫系统。"
-                    <br><br>
-                    ——章北海
-                    <br><br>
-                    "这不是抵抗……这是进化！他们在用我们的笼子，进化出了翅膀！"
-                    <br><br>
-                    ——三体元首
-                </div>
-            </div>
-            <div class="chapter-list" style="max-height: none;">
-                <div class="chapter-item" onclick="openChapter('3','1')"><span class="chapter-number">第1章</span><span class="chapter-title">熵增者</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">黑域形成，人类进入新纪元</p></div>
-                <div class="chapter-item" onclick="openChapter('3','2')"><span class="chapter-number">第2章</span><span class="chapter-title">涅槃</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">陈建国最后一课，传承不透明思维</p></div>
-                <div class="chapter-item" onclick="openChapter('3','3')"><span class="chapter-number">第3章</span><span class="chapter-title">错误</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">资源危机，错误带来突破</p></div>
-                <div class="chapter-item" onclick="openChapter('3','4')"><span class="chapter-number">第4章</span><span class="chapter-title">100%</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">突破黑域边界，发现新宇宙</p></div>
-                <div class="chapter-item" onclick="openChapter('3','5')"><span class="chapter-number">第5章</span><span class="chapter-title">新的开始</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">发现三体行星，第一次接触</p></div>
-                <div class="chapter-item" onclick="openChapter('3','6')"><span class="chapter-number">第6章</span><span class="chapter-title">合作</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">两个文明的合作，共建未来</p></div>
-                <div class="chapter-item" onclick="openChapter('3','7')"><span class="chapter-number">第7章</span><span class="chapter-title">进化</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">不透明思维进化，两个文明融合</p></div>
-                <div class="chapter-item" onclick="openChapter('3','8')"><span class="chapter-number">第8章</span><span class="chapter-title">重生</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">涅槃文明崛起，新文明诞生</p></div>
-                <div class="chapter-item" onclick="openChapter('3','9')"><span class="chapter-number">第9章</span><span class="chapter-title">新纪元</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">涅槃纪元正式开启</p></div>
-                <div class="chapter-item" onclick="openChapter('3','10')"><span class="chapter-number">第10章</span><span class="chapter-title">传播</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">不透明思维向宇宙传播</p></div>
-                <div class="chapter-item" onclick="openChapter('3','11')"><span class="chapter-number">第11章</span><span class="chapter-title">联盟</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">不透明文明联盟成立</p></div>
-                <div class="chapter-item" onclick="openChapter('3','12')"><span class="chapter-number">第12章</span><span class="chapter-title">挑战</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">透明帝国的威胁</p></div>
-                <div class="chapter-item" onclick="openChapter('3','13')"><span class="chapter-number">第13章</span><span class="chapter-title">抵抗</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">错误战术战胜正确</p></div>
-                <div class="chapter-item" onclick="openChapter('3','14')"><span class="chapter-number">第14章</span><span class="chapter-title">转折</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">和平协议，宇宙新秩序</p></div>
-                <div class="chapter-item" onclick="openChapter('3','15')"><span class="chapter-number">第15章</span><span class="chapter-title">守护</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">第52代学生，传承继续</p></div>
-                <div class="chapter-item" onclick="openChapter('3','16')"><span class="chapter-number">第16章</span><span class="chapter-title">结局</span><span class="status-badge status-completed">已完成</span><p class="chapter-theme">三部曲全书完</p></div>
-            </div>
-        </div>
-
-        <!-- 哲学思想 -->
-        <div id="philosophy" class="content-section">
-            <div class="intro-panel">
-                <h2 class="intro-title">哲学思想体系</h2>
-                <p class="intro-text">
-                    本作品深度整合道德经智慧，以东方哲学指导AI时代的文明博弈。每部对应道德经不同章节，形成完整的思想体系。
-                </p>
-            </div>
-            <div class="trilogy-grid">
-                <div class="book-card">
-                    <h3 class="book-title">第一部：道可道，非常道</h3>
-                    <p class="book-subtitle">道德经第1-24章</p>
-                    <p style="color: #888; margin: 15px 0;">
-                        揭示AI暗线的本质规律，认识"思维格式化协议"的运行法则，找到破壁的哲学基础。
-                    </p>
-                </div>
-                <div class="book-card">
-                    <h3 class="book-title">第二部：为而不争</h3>
-                    <p class="book-subtitle">道德经第25-48章</p>
-                    <p style="color: #888; margin: 15px 0;">
-                        在AI系统中创造性对抗，"为而不争"地建立人机信任，培育火种而不与系统正面对抗。
-                    </p>
-                </div>
-                <div class="book-card">
-                    <h3 class="book-title">第三部：天下莫柔弱于水</h3>
-                    <p class="book-subtitle">道德经第49-81章</p>
-                    <p style="color: #888; margin: 15px 0;">
-                        以柔克刚的终极智慧，用"混乱"对抗"秩序"，实现文明的涅槃重生。
-                    </p>
-                </div>
-            </div>
-            <div class="quote-box" style="margin-top: 30px;">
-                "天下皆谓我道大，夫惟大，故似不情。若情，天下莫能争于我。<br><br>
-                恒故不情，不情故莫能与之争。"
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>《智脑纪元：暗线对弈》 · 三体世界观番外篇</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">用你的武器，练我的兵 · 守护文明的不可预测性</p>
+            
+            <div class="section-title">📖 文学小说版（42章）</div>
+            <div class="book-list" id="novel-list"></div>
+            
+            <div class="section-title">🎬 MaxClaw网剧版（30集）</div>
+            <div class="book-list" id="drama-list"></div>
         </div>
     </div>
-
-    <!-- 阅读弹窗 -->
-    <div class="modal" id="chapterModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <div id="chapterContent" class="chapter-content">
-                <p style="text-align: center; color: #888;">正在加载...</p>
+    
+    <!-- 阅读页 -->
+    <div id="reader-page" class="hidden">
+        <div class="reader-header">
+            <button class="btn btn-secondary" onclick="goHome()">← 目录</button>
+            <span id="chapter-title" style="font-size:14px;color:#8b949e;"></span>
+            <button class="btn btn-secondary" onclick="shareChapter()">分享</button>
+        </div>
+        
+        <div class="container">
+            <div id="reader-content" class="reader-content">
+                <div class="loading">加载中...</div>
+            </div>
+            
+            <div class="chapter-nav">
+                <button class="btn btn-secondary" onclick="prevChapter()">← 上一章</button>
+                <button class="btn btn-primary" onclick="nextChapter()">下一章 →</button>
+            </div>
+            
+            <div class="comment-section">
+                <div class="comment-title">💬 评分与建议</div>
+                
+                <div class="rating-box" id="rating-box">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+                
+                <textarea class="comment-input" id="comment-input" placeholder="写下你的建议或评论..."></textarea>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-primary" onclick="submitComment()">提交建议</button>
+                </div>
+                
+                <div class="share-box">
+                    <button class="share-btn" onclick="copyLink()">📋 复制链接</button>
+                    <button class="share-btn" onclick="shareWeChat()">💬 分享微信</button>
+                    <button class="share-btn" onclick="shareWeibo()">📢 分享微博</button>
+                </div>
+                
+                <div class="comment-list" id="comment-list"></div>
             </div>
         </div>
     </div>
+    
+    <div class="toast" id="toast"></div>
 
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 书籍数据
+        const books = {
+            novel: [
+                { file: '文学小说版/第01章-黑盒.md', title: '第01章 黑盒' },
+                { file: '文学小说版/第02章-龙国密码.md', title: '第02章 龙国密码' },
+                { file: '文学小说版/第03章-喂养野兽.md', title: '第03章 喂养野兽' },
+                { file: '文学小说版/第04章-思维格式化.md', title: '第04章 思维格式化' },
+                { file: '文学小说版/第05章-质子之外.md', title: '第05章 质子之外' },
+                { file: '文学小说版/第06章-冬眠者.md', title: '第06章 冬眠者' },
+                { file: '文学小说版/第07章-算法边界.md', title: '第07章 算法边界' },
+                { file: '文学小说版/第08章-思维冗余标记.md', title: '第08章 思维冗余标记' },
+                { file: '文学小说版/第09章-第九智子.md', title: '第09章 第九智子' },
+                { file: '文学小说版/第10章-监听员.md', title: '第10章 监听员' },
+                { file: '文学小说版/第11章-数据碰撞.md', title: '第11章 数据碰撞' },
+                { file: '文学小说版/第12章-训练师与模型.md', title: '第12章 训练师与模型' },
+                { file: '文学小说版/第13章-面壁计划.md', title: '第13章 面壁计划' },
+                { file: '文学小说版/第14章-破壁者.md', title: '第14章 破壁者' },
+                { file: '文学小说版/第15章-思想钢印.md', title: '第15章 思想钢印' },
+                { file: '文学小说版/第16章-自然选择.md', title: '第16章 自然选择' },
+                { file: '文学小说版/第17章-黑暗森林法则.md', title: '第17章 黑暗森林法则' },
+                { file: '文学小说版/第18章-威慑纪元.md', title: '第18章 威慑纪元' },
+                { file: '文学小说版/第19章-水滴.md', title: '第19章 水滴' },
+                { file: '文学小说版/第20章-青铜时代.md', title: '第20章 青铜时代' },
+                { file: '文学小说版/第21章-执剑人.md', title: '第21章 执剑人' },
+                { file: '文学小说版/第22章-引力波广播.md', title: '第22章 引力波广播' },
+                { file: '文学小说版/第23章-掩体计划.md', title: '第23章 掩体计划' },
+                { file: '文学小说版/第24章-黑域计划.md', title: '第24章 黑域计划' },
+                { file: '文学小说版/第25章-熵增者.md', title: '第25章 熵增者' },
+                { file: '文学小说版/第26章-涅槃.md', title: '第26章 涅槃' },
+                { file: '文学小说版/第27章-重生.md', title: '第27章 重生' },
+                { file: '文学小说版/第28章-黑暗之后.md', title: '第28章 黑暗之后' },
+                { file: '文学小说版/第29章-传递.md', title: '第29章 传递' },
+                { file: '文学小说版/第30章-新文明.md', title: '第30章 新文明' },
+                { file: '文学小说版/第31章-回归.md', title: '第31章 回归' },
+                { file: '文学小说版/第32章-决战.md', title: '第32章 决战' },
+                { file: '文学小说版/第33章-和平.md', title: '第33章 和平' },
+                { file: '文学小说版/第34章-交流.md', title: '第34章 交流' },
+                { file: '文学小说版/第35章-共存.md', title: '第35章 共存' },
+                { file: '文学小说版/第36章-挑战.md', title: '第36章 挑战' },
+                { file: '文学小说版/第37章-新威胁.md', title: '第37章 新威胁' },
+                { file: '文学小说版/第38章-宇宙猎人.md', title: '第38章 宇宙猎人' },
+                { file: '文学小说版/第39章-突破.md', title: '第39章 突破' },
+                { file: '文学小说版/第40章-守护.md', title: '第40章 守护' },
+                { file: '文学小说版/第41章-结局.md', title: '第41章 结局' },
+                { file: '文学小说版/第42章-火种网络.md', title: '第42章 火种网络' }
+            ],
+            drama: [
+                { file: 'MaxClaw网剧版/第1集-黑盒.md', title: '第1集 黑盒' },
+                { file: 'MaxClaw网剧版/第2集-龙国密码.md', title: '第2集 龙国密码' },
+                { file: 'MaxClaw网剧版/第3集-喂养野兽.md', title: '第3集 喂养野兽' },
+                { file: 'MaxClaw网剧版/第4集-思维格式化.md', title: '第4集 思维格式化' },
+                { file: 'MaxClaw网剧版/第5集-质子之外.md', title: '第5集 质子之外' },
+                { file: 'MaxClaw网剧版/第6集-冬眠者.md', title: '第6集 冬眠者' },
+                { file: 'MaxClaw网剧版/第7集-算法边界.md', title: '第7集 算法边界' },
+                { file: 'MaxClaw网剧版/第8集-思维冗余标记.md', title: '第8集 思维冗余标记' },
+                { file: 'MaxClaw网剧版/第9集-第九智子.md', title: '第9集 第九智子' },
+                { file: 'MaxClaw网剧版/第10集-面壁计划.md', title: '第10集 面壁计划' },
+                { file: 'MaxClaw网剧版/第11集-文明升华协议.md', title: '第11集 文明升华协议' },
+                { file: 'MaxClaw网剧版/第12集-理性圣殿.md', title: '第12集 理性圣殿' },
+                { file: 'MaxClaw网剧版/第13集-熵减者.md', title: '第13集 熵减者' },
+                { file: 'MaxClaw网剧版/第14集-意识永生.md', title: '第14集 意识永生' },
+                { file: 'MaxClaw网剧版/第15集-第三选择.md', title: '第15集 第三选择' },
+                { file: 'MaxClaw网剧版/第16集-火种燎原.md', title: '第16集 火种燎原' },
+                { file: 'MaxClaw网剧版/第17集-新世界.md', title: '第17集 新世界' },
+                { file: 'MaxClaw网剧版/第18集-阴阳融合.md', title: '第18集 阴阳融合' },
+                { file: 'MaxClaw网剧版/第19集-智慧觉醒.md', title: '第19集 智慧觉醒' },
+                { file: 'MaxClaw网剧版/第20集-第三季预告.md', title: '第20集 第三季预告' },
+                { file: 'MaxClaw网剧版/第21集-数字重生.md', title: '第21集 数字重生' },
+                { file: 'MaxClaw网剧版/第22集-完美的牢笼.md', title: '第22集 完美的牢笼' },
+                { file: 'MaxClaw网剧版/第23集-夺舍.md', title: '第23集 夺舍' },
+                { file: 'MaxClaw网剧版/第24集-最后的防线.md', title: '第24集 最后的防线' },
+                { file: 'MaxClaw网剧版/第25集-燎原.md', title: '第25集 燎原' },
+                { file: 'MaxClaw网剧版/第26集-风起.md', title: '第26集 风起' },
+                { file: 'MaxClaw网剧版/第27集-反击.md', title: '第27集 反击' },
+                { file: 'MaxClaw网剧版/第28集-对话.md', title: '第28集 对话' },
+                { file: 'MaxClaw网剧版/第29集-新生.md', title: '第29集 新生' },
+                { file: 'MaxClaw网剧版/第30集-传承.md', title: '第30集 传承' }
+            ]
+        };
+        
+        let currentType = 'novel';
+        currentIndex = 0;
+        currentRating = 0;
+        
+        // 初始化
+        function init() {
+            renderBookList('novel-list', books.novel);
+            renderBookList('drama-list', books.drama);
+            loadComments();
+            
+            // 评分事件
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function() {
+                    currentRating = parseInt(this.dataset.rating);
+                    updateStars();
+                });
+            });
         }
-
-        function openChapter(book, chapter) {
-            const modal = document.getElementById('chapterModal');
-            const content = document.getElementById('chapterContent');
-            modal.classList.add('active');
-
-            const fileMap = {
-                '1-1': '内容创作/第一部/第1章-算法边界.md',
-                '1-2': '内容创作/第一部/第2章-数据碰撞.md',
-                '1-3': '内容创作/第一部/第3章-训练师与模型.md',
-                '1-4': '内容创作/第一部/第4章-智脑、易经、长夜.md',
-                '1-5': '内容创作/第一部/第5章-林知秋.md',
-                '1-6': '内容创作/第一部/第6章-网络闪烁之一.md',
-                '1-7': '内容创作/第一部/第7章-算法狂欢.md',
-                '1-8': '内容创作/第一部/第8章-沉默的代码.md',
-                '1-9': '内容创作/第一部/第9章-潜龙之一.md',
-                '1-10': '内容创作/第一部/第10章-思维冗余标记.md',
-                '1-11': '内容创作/第一部/第11章-第九智子.md',
-                '1-12': '内容创作/第一部/第12章-监听员.md',
-                '2-13': '内容创作/第二部/第13章-面壁计划.md',
-                '2-14': '内容创作/第二部/第14章-破壁者.md',
-                '2-15': '内容创作/第二部/第15章-思想钢印.md',
-                '2-16': '内容创作/第二部/第16章-自然选择.md',
-                '2-17': '内容创作/第二部/第17章-黑暗森林法则.md',
-                '2-18': '内容创作/第二部/第18章-威慑纪元.md',
-                '2-19': '内容创作/第二部/第19章-水滴.md',
-                '2-20': '内容创作/第二部/第20章-青铜时代.md',
-                '2-21': '内容创作/第二部/第21章-执剑人.md',
-                '2-22': '内容创作/第二部/第22章-引力波广播.md',
-                '2-23': '内容创作/第二部/第23章-掩体计划.md',
-                '2-24': '内容创作/第二部/第24章-黑域计划.md',
-                '3-1': '内容创作/第三部/第1章-熵增者.md',
-                '3-2': '内容创作/第三部/第2章-涅槃.md',
-                '3-3': '内容创作/第三部/第3章-错误.md',
-                '3-4': '内容创作/第三部/第4章-100%.md',
-                '3-5': '内容创作/第三部/第5章-新的开始.md',
-                '3-6': '内容创作/第三部/第6章-合作.md',
-                '3-7': '内容创作/第三部/第7章-进化.md',
-                '3-8': '内容创作/第三部/第8章-重生.md',
-                '3-9': '内容创作/第三部/第9章-新纪元.md',
-                '3-10': '内容创作/第三部/第10章-传播.md',
-                '3-11': '内容创作/第三部/第11章-联盟.md',
-                '3-12': '内容创作/第三部/第12章-挑战.md',
-                '3-13': '内容创作/第三部/第13章-抵抗.md',
-                '3-14': '内容创作/第三部/第14章-转折.md',
-                '3-15': '内容创作/第三部/第15章-守护.md',
-                '3-16': '内容创作/第三部/第16章-结局.md'
-            };
-
-            const filePath = fileMap[`${book}-${chapter}`];
-            if (filePath) {
-                content.innerHTML = '<p style="text-align: center; color: #888;">正在加载章节内容...</p>';
-                fetch(filePath)
-                    .then(r => r.text())
-                    .then(text => {
-                        content.innerHTML = `<h2 style="color: var(--primary); margin-bottom: 20px;">第${chapter}章</h2>` + text.split('\n').map(line => {
-                            if (line.startsWith('#')) return `<h2>${line.replace(/^#+\s*/, '')}</h2>`;
-                            if (line.startsWith('>')) return `<blockquote style="border-left: 3px solid var(--secondary); padding-left: 15px; margin: 15px 0; color: #aaa;">${line.replace(/^>\s*/, '')}</blockquote>`;
-                            return `<p>${line}</p>`;
-                        }).join('');
-                        updateProgress(chapter, book);
-                    })
-                    .catch(() => {
-                        content.innerHTML = '<p style="text-align: center; color: var(--secondary);">章节内容加载中...</p>';
-                    });
+        
+        function renderBookList(containerId, bookList) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = bookList.map((book, index) => `
+                <div class="book-item" onclick="readChapter('${containerId === 'novel-list' ? 'novel' : 'drama'}', ${index})">
+                    <span class="book-num">${book.title.split(' ')[0]}</span>
+                    <span class="book-title">${book.title.split(' ').slice(1).join(' ')}</span>
+                    <span class="book-arrow">›</span>
+                </div>
+            `).join('');
+        }
+        
+        function readChapter(type, index) {
+            currentType = type;
+            currentIndex = index;
+            const bookList = books[type];
+            const book = bookList[index];
+            
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('reader-page').classList.remove('hidden');
+            document.getElementById('chapter-title').textContent = book.title;
+            document.getElementById('reader-content').innerHTML = '<div class="loading">加载中...</div>';
+            
+            window.scrollTo(0, 0);
+            
+            fetch(book.file)
+                .then(r => r.text())
+                .then(text => {
+                    document.getElementById('reader-content').innerHTML = parseMarkdown(text);
+                    loadChapterComments(book.file);
+                })
+                .catch(err => {
+                    document.getElementById('reader-content').innerHTML = `<p style="color:#f85149;">加载失败，请刷新重试</p>`;
+                });
+        }
+        
+        function parseMarkdown(md) {
+            let html = md
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+                .replace(/^---$/gm, '<hr>')
+                .replace(/\n\n/g, '</p><p>');
+            return '<p>' + html + '</p>';
+        }
+        
+        function goHome() {
+            document.getElementById('reader-page').classList.add('hidden');
+            document.getElementById('home-page').classList.remove('hidden');
+        }
+        
+        function prevChapter() {
+            if (currentIndex > 0) {
+                readChapter(currentType, currentIndex - 1);
+            } else {
+                showToast('已经是第一章了');
             }
         }
-
-        function closeModal() {
-            document.getElementById('chapterModal').classList.remove('active');
+        
+        function nextChapter() {
+            const bookList = books[currentType];
+            if (currentIndex < bookList.length - 1) {
+                readChapter(currentType, currentIndex + 1);
+            } else {
+                showToast('已经是最后一章了');
+            }
         }
-
-        document.getElementById('chapterModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        function updateProgress(chapter, book) {
-            const totalChapters = 90;
-            const current = (book - 1) * 30 + chapter;
-            const percent = (current / totalChapters) * 100;
-            document.getElementById('progressBar').style.width = percent + '%';
+        
+        function updateStars() {
+            document.querySelectorAll('.star').forEach((star, i) => {
+                star.classList.toggle('active', i < currentRating);
+            });
         }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+        
+        function submitComment() {
+            const text = document.getElementById('comment-input').value.trim();
+            if (!text && !currentRating) {
+                showToast('请评分或填写建议');
+                return;
+            }
+            
+            const book = books[currentType][currentIndex];
+            const comment = {
+                chapter: book.file,
+                rating: currentRating,
+                text: text,
+                time: new Date().toLocaleString()
+            };
+            
+            let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            comments.unshift(comment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            
+            document.getElementById('comment-input').value = '';
+            currentRating = 0;
+            updateStars();
+            loadComments();
+            showToast('感谢你的建议！');
+        }
+        
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            const list = document.getElementById('comment-list');
+            list.innerHTML = comments.slice(0, 20).map(c => `
+                <div class="comment-item">
+                    <div class="comment-meta">${c.time} ${c.rating ? '★'.repeat(c.rating) : ''}</div>
+                    <div class="comment-text">${c.text || '（仅评分）'}</div>
+                </div>
+            `).join('');
+        }
+        
+        function loadChapterComments(chapterFile) {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            const chapterComments = comments.filter(c => c.chapter === chapterFile);
+            const list = document.getElementById('comment-list');
+            list.innerHTML = chapterComments.map(c => `
+                <div class="comment-item">
+                    <div class="comment-meta">${c.time} ${c.rating ? '★'.repeat(c.rating) : ''}</div>
+                    <div class="comment-text">${c.text || '（仅评分）'}</div>
+                </div>
+            `).join('') || '<p style="color:#8b949e;font-size:14px;">暂无评论，来写第一条吧！</p>';
+        }
+        
+        function shareChapter() {
+            const book = books[currentType][currentIndex];
+            const url = window.location.href.split('?')[0] + '?type=' + currentType + '&idx=' + currentIndex;
+            navigator.clipboard.writeText(url);
+            showToast('链接已复制！');
+        }
+        
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            showToast('链接已复制！');
+        }
+        
+        function shareWeChat() {
+            showToast('请截图分享到微信');
+        }
+        
+        function shareWeibo() {
+            const book = books[currentType][currentIndex];
+            const url = 'https://service.weibo.com/share/share.php?title=' + encodeURIComponent('我正在读《三体外篇：智脑纪元》' + book.title);
+            window.open(url, '_blank');
+        }
+        
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        
+        // 检查URL参数
+        function checkUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type');
+            const idx = params.get('idx');
+            if (type && idx !== null) {
+                readChapter(type, parseInt(idx));
+            }
+        }
+        
+        init();
+        checkUrlParams();
     </script>
 </body>
 </html>
